@@ -8,8 +8,7 @@ import lombok.extern.jackson.Jacksonized;
 @ToString
 @EqualsAndHashCode
 @Jacksonized
-public class AddProjectModel {
+public class AddTestRunModel {
     private String name;
-    private String announcement;
-    private boolean show_announcement;
+    private int suite_id;
 }

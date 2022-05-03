@@ -40,6 +40,5 @@ public class DataTypeOfAllProjectsTest extends BaseRestAssuredTest {
                 .and()
                 .log()
                 .all();
-
     }
 }

@@ -13,8 +13,8 @@ import java.sql.SQLException;
 
 public class TestCasesPage extends BasePage {
     private final By TEST_CASES_TAB = By.xpath("//a[@class='link' and contains(.,'Test Cases')]");
-    private final By TEST_CASES_ADDTEST_CASE_BUTT = By.xpath("//a[@id='addSectionInline']//following-sibling::a[contains(.,'Add Test Case')]");
-    private final By TEST_CASES_SAVETESTCASE_BUTT = By.id("accept");
+    private final By ADD_TEST_CASE_BUTT = By.xpath("//a[@id='addSectionInline']//following-sibling::a[contains(.,'Add Test Case')]");
+    private final By SAVE_TEST_CASE_BUTT = By.id("accept");
     WebUrl webUrl = new WebUrl();
 
     public TestCasesPage(WebDriver driver) {
@@ -30,12 +30,12 @@ public class TestCasesPage extends BasePage {
     }
 
     public void addTestCase() {
-        driver.findElement(TEST_CASES_ADDTEST_CASE_BUTT).click();
+        driver.findElement(ADD_TEST_CASE_BUTT).click();
     }
 
 
     @Step("Fill out the form and click to save a new test case")
-    public void saveTestCase(TestCasesModel testCasesModel) {
+    public void fillTestCase(TestCasesModel testCasesModel) {
         new TestCasesInputFields(driver, "title").inputText(testCasesModel.getTitle());
         new TestCasesSelectOption(driver, "Test Cases").selectOption(testCasesModel.getSection());
         new TestCasesSelectOption(driver, "Test Case (Text)").selectOption(testCasesModel.getTemplate());
@@ -50,6 +50,6 @@ public class TestCasesPage extends BasePage {
     }
 
     public void saveTestCase() {
-        driver.findElement(TEST_CASES_SAVETESTCASE_BUTT).click();
+        driver.findElement(SAVE_TEST_CASE_BUTT).click();
     }
 }

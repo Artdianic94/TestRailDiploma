@@ -26,4 +26,5 @@ public class CreateANewProjectTest extends BaseTest {
         String actualNameOnMainPage = newProjectPage.getNameOfProjectOnMainPage();
         Assert.assertEquals(expectedNameOfNewProject, actualNameOnMainPage, "Names are not equal");
     }
+
 }
