@@ -25,6 +25,7 @@ public class TestCasesPage extends BasePage {
         driver.get(webUrl.getTRDashboardUrl());
     }
 
+    @Step("Open add case tab")
     public void openTestCasesTab() {
         driver.findElement(TEST_CASES_TAB).click();
     }

@@ -13,7 +13,9 @@ import staticdata.MyData;
 import tests.apitests.restassuredtests.BaseRestAssuredTest;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
+
 
 public class BaseTest {
     WebDriver driver;
@@ -21,9 +23,9 @@ public class BaseTest {
     private static final Logger LOGGER = LogManager.getLogger(CreateANewProjectTest.class.getName());
     MyData myData = new MyData();
 
-    @BeforeSuite
+    @BeforeClass
     @Parameters({"browser"})
-    public void setUp(@Optional("chrome") String browser) throws SQLException {
+    public void setUp(@Optional("firefox") String browser) throws SQLException, MalformedURLException {
 
         DriverFactory factory = new DriverFactory();
         DriverType driverType = switch (browser) {
@@ -49,15 +51,14 @@ public class BaseTest {
         return driver;
     }
 
-    @AfterTest
+    @AfterTest(alwaysRun = true)
+    public void quiteBrowser() {
+        driverManager.quitDriver();
+    }
+
+    @AfterSuite
     public void deleteCreatedProject() throws SQLException, IOException {
         BaseRestAssuredTest baseRestAssuredTest = new BaseRestAssuredTest();
         baseRestAssuredTest.deleteProject();
     }
-
-    @AfterSuite(alwaysRun = true)
-    public void tearDown() {
-        driverManager.quitDriver();
-    }
-
 }

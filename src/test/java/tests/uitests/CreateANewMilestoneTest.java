@@ -7,6 +7,7 @@ import io.qameta.allure.SeverityLevel;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.MilestonePage;
 import pages.NewProjectPage;
@@ -17,6 +18,12 @@ import utilities.Retry;
 import java.sql.SQLException;
 
 public class CreateANewMilestoneTest extends BaseTest {
+    @BeforeMethod
+    public void createProject() {
+        NewProjectPage newProjectPage = new NewProjectPage(driver);
+        newProjectPage.createProject();
+    }
+
     private static final Logger LOGGER = LogManager.getLogger(CreateANewTestCaseTest.class.getName());
 
     @Description("Checking for the message that test a milestone has been successfully created")
@@ -24,8 +31,6 @@ public class CreateANewMilestoneTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Link("https://testrail.io")
     public void createANewMilestoneTest() throws SQLException {
-        NewProjectPage newProjectPage = new NewProjectPage(driver);
-        newProjectPage.createProject();
         MilestonePage milestonePage = new MilestonePage(driver);
         milestonePage.openMainPage();
         milestonePage.openMilestoneTab();

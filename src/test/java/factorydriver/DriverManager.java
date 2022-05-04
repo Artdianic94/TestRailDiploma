@@ -3,12 +3,13 @@ package factorydriver;
 import org.openqa.selenium.WebDriver;
 import staticdata.WebTimeouts;
 
+import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 public abstract class DriverManager {
     public WebDriver driver;
 
-    public abstract void setUpDriver();
+    public abstract void setUpDriver() throws MalformedURLException;
 
     public WebDriver getDriver() {
         return driver;

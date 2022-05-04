@@ -43,7 +43,7 @@ public class UpdateAProjectTest extends BaseRestAssuredTest {
                 .and()
                 .body(updateProjectModel)
                 .and()
-                .pathParam("project_id", projectsId.getProjectsId())
+                .pathParam("project_id", projectsId.getProjectsId().get(0))
                 .when()
                 .post(webUrl.getTRUpdateProjectUrl())
                 .then()

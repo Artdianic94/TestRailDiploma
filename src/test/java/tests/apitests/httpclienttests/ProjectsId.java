@@ -29,10 +29,10 @@ public class ProjectsId {
     private static final Logger LOGGER = LogManager.getLogger(LoginHTTPClientTest.class.getName());
     MyData myData = new MyData();
     HttpClient httpClient;
-    int projectId;
+    List<Integer> projectId;
 
 
-    public Integer getProjectsId() throws IOException, SQLException {
+    public List<Integer> getProjectsId() throws IOException, SQLException {
         WebUrl webUrl = new WebUrl();
         httpClient = HttpClientBuilder.create().build();
         HttpPost loginRequest = new HttpPost(webUrl.getTRLoginUrl());
@@ -46,7 +46,7 @@ public class ProjectsId {
         HttpResponse response = httpClient.execute(projectsRequest);
         Gson gson = new Gson();
         GetAllProjectsModel actualProjects = gson.fromJson(EntityUtils.toString(response.getEntity()), GetAllProjectsModel.class);
-        projectId = actualProjects.getMapOfProjects(actualProjects.getProjects()).get(0);
+        projectId = actualProjects.getMapOfProjects(actualProjects.getProjects());
         LOGGER.log(Level.INFO, "The project Id is" + projectId);
         return projectId;
     }

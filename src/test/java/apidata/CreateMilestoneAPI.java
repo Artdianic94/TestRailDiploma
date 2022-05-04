@@ -1,9 +1,7 @@
-package testdata;
+package apidata;
 
 import io.restassured.http.ContentType;
-import models.apimodels.AddTestCaseModel;
-import models.apimodels.AddTestRunModel;
-import models.apimodels.UpdateTestRunModel;
+import models.apimodels.AddMilestoneModel;
 import org.apache.http.HttpStatus;
 import staticdata.MyData;
 import staticdata.WebUrl;
@@ -16,37 +14,35 @@ import java.util.Base64;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateTestRunAPI {
+public class CreateMilestoneAPI {
     MyData myData = new MyData();
     WebUrl webUrl = new WebUrl();
     String encoding = Base64.getEncoder().encodeToString((myData.getMyData().get("email") + ":" + myData.getMyData().get("password")).getBytes());
     ProjectsId projectsId = new ProjectsId();
 
-    public CreateTestRunAPI() throws SQLException {
+    public CreateMilestoneAPI() throws SQLException {
     }
 
-    public int getRunId() throws SQLException, IOException {
-        CreateTestCaseAPI createTestCaseAPI = new CreateTestCaseAPI();
-        AddTestRunModel addTestRunModel = new AddTestRunModel();
-        addTestRunModel.setName(GenerateFakeMessage.getTitle());
-        addTestRunModel.setSuite_id(createTestCaseAPI.getSuiteId());
-        int run_id = given()
+    public int getMilestoneId() throws SQLException, IOException {
+        AddMilestoneModel addMilestoneModel = new AddMilestoneModel();
+        addMilestoneModel.setName(GenerateFakeMessage.getProjectName());
+        addMilestoneModel.setDescription(GenerateFakeMessage.getDescription());
+        return given()
                 .header("Authorization", "Basic " + encoding)
-                .when()
                 .contentType(ContentType.JSON)
+                .and()
+                .pathParam("project_id", projectsId.getProjectsId().get(0))
                 .log()
                 .all()
-                .and()
-                .body(addTestRunModel)
-                .and()
-                .pathParam("project_id", projectsId.getProjectsId())
                 .when()
-                .post(webUrl.getTRCreateTestRunUrl())
+                .body(addMilestoneModel)
+                .when()
+                .post(webUrl.getTRCreateMilestoneUrl())
                 .then()
                 .log()
                 .all()
                 .statusCode(HttpStatus.SC_OK)
                 .extract().path("id");
-        return run_id;
     }
+
 }

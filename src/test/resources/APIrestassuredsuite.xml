@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="API Rest assured suite" parallel="classes">
+    <test name="DataTypeOfAllProjectsTest">
+        <classes>
+            <class name="tests.apitests.restassuredtests.DataTypeOfAllProjectsTest"/>
+        </classes>
+    </test>
+    <test name="UpdateAProjectTest">
+        <classes>
+            <class name="tests.apitests.restassuredtests.UpdateAProjectTest"/>
+        </classes>
+    </test>
+    <test name="UpdateATestCaseTest">
+        <classes>
+            <class name="tests.apitests.restassuredtests.UpdateATestCaseTest"/>
+        </classes>
+    </test><!-- Test -->
+    <test name="UpdateTestRunTest">
+        <classes>
+            <class name="tests.apitests.restassuredtests.UpdateTestRunTest"/>
+        </classes>
+    </test><!-- Test -->
+    <test name="UpdateMilestoneTest">
+        <classes>
+            <class name="tests.apitests.restassuredtests.UpdateMilestoneTest"/>
+        </classes>
+    </test><!-- Test -->
+</suite>

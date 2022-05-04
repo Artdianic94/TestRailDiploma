@@ -1,4 +1,4 @@
-package testdata;
+package apidata;
 
 import io.restassured.http.ContentType;
 import models.apimodels.AddSectionModel;
@@ -33,7 +33,7 @@ public class CreateTestCaseAPI {
                 .header("Authorization", "Basic " + encoding)
                 .contentType(ContentType.JSON)
                 .and()
-                .pathParam("project_id", projectsId.getProjectsId())
+                .pathParam("project_id", projectsId.getProjectsId().get(0))
                 .log()
                 .all()
                 .when()
@@ -58,7 +58,7 @@ public class CreateTestCaseAPI {
                         .header("Authorization", "Basic " + encoding)
                         .contentType(ContentType.JSON)
                         .and()
-                        .pathParam("project_id", projectsId.getProjectsId())
+                        .pathParam("project_id", projectsId.getProjectsId().get(0))
                         .log()
                         .all()
                         .when()

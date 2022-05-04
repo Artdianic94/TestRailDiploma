@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 import staticdata.MyData;
 import staticdata.WebUrl;
-import testdata.CreateTestRunAPI;
+import apidata.CreateTestRunAPI;
 import tests.uitests.CreateANewTestCaseTest;
 import utilities.Retry;
 

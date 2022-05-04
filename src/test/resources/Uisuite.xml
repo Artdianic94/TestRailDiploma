@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="UI suite" parallel="tests">
+    <test name="CreateANewProjectTest">
+        <classes>
+            <class name="tests.uitests.CreateANewProjectTest"/>
+            <parameter name="browser" value="remote"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="CreateANewTestCaseTest">
+        <classes>
+            <class name="tests.uitests.CreateANewTestCaseTest"/>
+            <parameter name="browser" value="chrome"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="CreateANewTestRunTest">
+        <classes>
+            <class name="tests.uitests.CreateANewTestRunTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="CreateANewMilestoneTest">
+        <classes>
+            <class name="tests.uitests.CreateANewMilestoneTest"/>
+            <parameter name="browser" value="chrome"/>
+        </classes>
+    </test> <!-- Test -->
+</suite>
