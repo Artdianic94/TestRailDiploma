@@ -6,6 +6,8 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -15,6 +17,9 @@ import pages.SuccessfulMessagePage;
 import testdata.GetMilestoneModel;
 import utilities.Retry;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 
 public class CreateANewMilestoneTest extends BaseTest {
@@ -30,7 +35,7 @@ public class CreateANewMilestoneTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class)
     @Severity(SeverityLevel.CRITICAL)
     @Link("https://testrail.io")
-    public void createANewMilestoneTest() throws SQLException {
+    public void createANewMilestoneTest() throws SQLException, IOException {
         MilestonePage milestonePage = new MilestonePage(driver);
         milestonePage.openMainPage();
         milestonePage.openMilestoneTab();
@@ -42,6 +47,9 @@ public class CreateANewMilestoneTest extends BaseTest {
         LOGGER.debug("Debugging message" + successfulMessagePage.getClass().getName());
         String actualMessage = successfulMessagePage.messageGetText();
         String expectedAlertMessage = "Successfully added the new milestone.";
+        TakesScreenshot screenShot = ((TakesScreenshot) driver);
+        byte[] sourceFile = screenShot.getScreenshotAs(OutputType.BYTES);
+        Files.write(Paths.get("src/test/resources/createANewMilestoneTest.png"), sourceFile);
         Assert.assertEquals(actualMessage, expectedAlertMessage, "Messages are not equal");
     }
 }

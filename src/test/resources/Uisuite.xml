@@ -16,12 +16,12 @@
     <test name="CreateANewTestRunTest">
         <classes>
             <class name="tests.uitests.CreateANewTestRunTest"/>
+            <parameter name="browser" value="chrome"/>
         </classes>
     </test> <!-- Test -->
     <test name="CreateANewMilestoneTest">
         <classes>
             <class name="tests.uitests.CreateANewMilestoneTest"/>
-            <parameter name="browser" value="chrome"/>
         </classes>
     </test> <!-- Test -->
 </suite>

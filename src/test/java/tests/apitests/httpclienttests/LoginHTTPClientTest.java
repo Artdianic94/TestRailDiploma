@@ -27,7 +27,7 @@ public class LoginHTTPClientTest extends BaseHTTPClientTest {
     private static final Logger LOGGER = LogManager.getLogger(LoginHTTPClientTest.class.getName());
     MyData myData = new MyData();
 
-    @Description("Checking for the login")
+    @Description("Checking login")
     @Test(retryAnalyzer = Retry.class)
     @Severity(SeverityLevel.CRITICAL)
     @Link("https://testrail.io/index.php?/auth/login")

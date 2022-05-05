@@ -8,9 +8,9 @@ import staticdata.WebUrl;
 import java.sql.SQLException;
 
 public class LoginPage extends BasePage {
-    private By EMAIL_INPUT = By.id("name");
-    private By PASSWORD_INPUT = By.id("password");
-    private By LOGIN_BUTTON = By.id("button_primary");
+    private final By EMAIL_INPUT = By.id("name");
+    private final By PASSWORD_INPUT = By.id("password");
+    private final By LOGIN_BUTTON = By.id("button_primary");
     WebUrl webUrl = new WebUrl();
 
     public LoginPage(WebDriver driver) {

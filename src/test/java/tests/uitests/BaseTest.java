@@ -11,12 +11,13 @@ import org.testng.annotations.*;
 import pages.LoginPage;
 import staticdata.MyData;
 import tests.apitests.restassuredtests.BaseRestAssuredTest;
+import utilities.TestListeners;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 
-
+@Listeners(TestListeners.class)
 public class BaseTest {
     WebDriver driver;
     DriverManager driverManager;
